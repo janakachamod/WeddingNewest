@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Seating App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Video -->
+   <div class="video-container">
+    <video class="video-background" autoplay loop muted playsinline>
+      <source src="wedding.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <!-- Background elements -->
+  <div class="bg-animation"></div>
+  <div class="particles" id="particles"></div>
+  <div class="overlay"></div>
+
+  <!-- Floating hearts -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- Audio control -->
+  <button class="audio-control" onclick="toggleAudio()">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1>Niran & Samadhi's Wedding</h1>
+      <p class="subtitle">Find your seat and celebrate with us! Let’s make wonderful memories together.</p>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <div class="search-section">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="guestInput" placeholder="Enter your name..." oninput="showSuggestions(this.value)">
+      </div>
+      <ul id="suggestions"></ul>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="location-btn">
+      <div class="location-container" onclick="openLocationPopup()">
+        <i class="fas fa-map-marker-alt location-icon"></i>
+        <span class="location-message">View wedding location</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location Popup -->
+  <div class="location-popup" id="locationPopup" onclick="closeLocationPopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <h2 class="popup-title">Wedding Location - Water's Edge view Hotel, Colombo</h2>
+      <div id="map" class="popup-map"></div>
+      <div class="map-actions">
+        <button class="nav-btn" onclick="openNavigation('google')">
+          <i class="fas fa-map"></i> Open in Google Maps
+        </button>
+        <button class="nav-btn" onclick="openNavigation('apple')">
+          <i class="fas fa-map-marked-alt"></i> Open in Apple Maps
+        </button>
+        <button class="nav-btn" onclick="copyLocation()">
+          <i class="fas fa-copy"></i> Copy Address
+        </button>
+      </div>
+    </div>
+    
+  </div>
+<!-- Footer -->
+<!-- Footer -->
+<!-- Footer -->
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+  <!-- Footer -->
+
+</footer>
+</body>
+</html>
