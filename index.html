@@ -11,12 +11,13 @@
 </head>
 <body>
   <!-- Background Video -->
-   <div class="video-container">
+  <div class="video-container">
     <video class="video-background" autoplay loop muted playsinline>
       <source src="wedding.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+  
   <!-- Background elements -->
   <div class="bg-animation"></div>
   <div class="particles" id="particles"></div>
@@ -39,7 +40,7 @@
   <header>
     <div class="header-content">
       <h1>Niran & Samadhi's Wedding</h1>
-      <p class="subtitle">Find your seat and celebrate with us! Let’s make wonderful memories together.</p>
+      <p class="subtitle">Find your seat and celebrate with us! Let's make wonderful memories together.</p>
     </div>
   </header>
 
@@ -56,41 +57,28 @@
     <div id="result"></div>
 
     <div class="location-btn">
-      <div class="location-container" onclick="openLocationPopup()">
+      <div class="location-container" onclick="openFloorplanPopup()">
         <i class="fas fa-map-marker-alt location-icon"></i>
-        <span class="location-message">View wedding location</span>
+        <span class="location-message">View Floor Plan</span>
       </div>
     </div>
   </div>
-
-  <!-- Location Popup -->
-  <div class="location-popup" id="locationPopup" onclick="closeLocationPopup()">
-    <div class="popup-content" onclick="event.stopPropagation()">
-      <h2 class="popup-title">Wedding Location - Water's Edge view Hotel, Colombo</h2>
-      <div id="map" class="popup-map"></div>
-      <div class="map-actions">
-        <button class="nav-btn" onclick="openNavigation('google')">
-          <i class="fas fa-map"></i> Open in Google Maps
-        </button>
-        <button class="nav-btn" onclick="openNavigation('apple')">
-          <i class="fas fa-map-marked-alt"></i> Open in Apple Maps
-        </button>
-        <button class="nav-btn" onclick="copyLocation()">
-          <i class="fas fa-copy"></i> Copy Address
-        </button>
-      </div>
+  
+<div class="floorplan-popup">
+  <div class="floorplan-content">
+    <h3 class="floorplan-title">Wedding Floor Plan</h3>
+    <div class="floorplan-close">&times;</div>
+    <div class="floorplan-image-container">
+      <img src="floorplan.jpg" alt="Wedding Floor Plan" class="floorplan-image">
     </div>
-    
   </div>
-<!-- Footer -->
-<!-- Footer -->
-<!-- Footer -->
+</div>
+  <!-- Floor Plan Popup -->
+  
+  
 
   <!-- JavaScript -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
-  <!-- Footer -->
-
-</footer>
 </body>
 </html>

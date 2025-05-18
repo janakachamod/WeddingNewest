@@ -204,7 +204,15 @@ function createConfetti() {
     }, 5000);
   }
 }
+// Show floor plan
+document.querySelector('.location-container').addEventListener('click', function() {
+  document.querySelector('.floorplan-popup').classList.add('active');
+});
 
+// Hide floor plan
+document.querySelector('.floorplan-close').addEventListener('click', function() {
+  document.querySelector('.floorplan-popup').classList.remove('active');
+});
 // Handle audio with user interaction requirement
 function handleAudio() {
   // Set audio volume to 50% to be less intrusive
@@ -298,57 +306,57 @@ function selectSuggestion(name) {
 }
 
 // Location popup functions
-function openLocationPopup() {
-  document.getElementById('locationPopup').classList.add('active');
-  setTimeout(() => {
-    if (!window.mapInitialized) {
-      const map = L.map('map').setView([6.905857692451532, 79.91171436387717], 15); // Colombo coordinates
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
+// function openLocationPopup() {
+//   document.getElementById('locationPopup').classList.add('active');
+//   setTimeout(() => {
+//     if (!window.mapInitialized) {
+//       const map = L.map('map').setView([6.905857692451532, 79.91171436387717], 15); // Colombo coordinates
+//       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//         attribution: '&copy; OpenStreetMap contributors'
+//       }).addTo(map);
       
-      // Custom wedding icon
-      const weddingIcon = L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/411/411745.png',
-        iconSize: [40, 40],
-        iconAnchor: [20, 40],
-        popupAnchor: [0, -40]
-      });
+//       // Custom wedding icon
+//       const weddingIcon = L.icon({
+//         iconUrl: 'https://cdn-icons-png.flaticon.com/512/411/411745.png',
+//         iconSize: [40, 40],
+//         iconAnchor: [20, 40],
+//         popupAnchor: [0, -40]
+//       });
       
-      L.marker([6.905857692451532, 79.91171436387717], {icon: weddingIcon}).addTo(map)
-        .bindPopup("<b>Wedding Venue</b><br>Water's Edge view Hotel, Colombo")
-        .openPopup();
+//       L.marker([6.905857692451532, 79.91171436387717], {icon: weddingIcon}).addTo(map)
+//         .bindPopup("<b>Wedding Venue</b><br>Water's Edge view Hotel, Colombo")
+//         .openPopup();
         
-      window.mapInitialized = true;
-    }
-  }, 200);
-}
+//       window.mapInitialized = true;
+//     }
+//   }, 200);
+// }
 
-function closeLocationPopup() {
-  document.getElementById('locationPopup').classList.remove('active');
-}
+// function closeLocationPopup() {
+//   document.getElementById('locationPopup').classList.remove('active');
+// }
 
-// Navigation functions
-function openNavigation(app) {
-  const lat = 6.905857692451532;
-  const lng = 79.91171436387717;
-  const address = "Water's Edge view Hotel, Colombo";
+// // Navigation functions
+// function openNavigation(app) {
+//   const lat = 6.905857692451532;
+//   const lng = 79.91171436387717;
+//   const address = "Water's Edge view Hotel, Colombo";
   
-  if (app === 'google') {
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving&dir_action=navigate`);
-  } else if (app === 'apple') {
-    window.open(`http://maps.apple.com/?daddr=${lat},${lng}&dirflg=d`);
-  }
-}
+//   if (app === 'google') {
+//     window.open(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving&dir_action=navigate`);
+//   } else if (app === 'apple') {
+//     window.open(`http://maps.apple.com/?daddr=${lat},${lng}&dirflg=d`);
+//   }
+// }
 
-function copyLocation() {
-  const address = "Water's Edge view Hotel, Colombo";
-  navigator.clipboard.writeText(address).then(() => {
-    alert("Address copied to clipboard!");
-  }).catch(err => {
-    console.error('Failed to copy address: ', err);
-  });
-}
+// function copyLocation() {
+//   const address = "Water's Edge view Hotel, Colombo";
+//   navigator.clipboard.writeText(address).then(() => {
+//     alert("Address copied to clipboard!");
+//   }).catch(err => {
+//     console.error('Failed to copy address: ', err);
+//   });
+// }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
