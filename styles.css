@@ -446,8 +446,8 @@ h1::after {
 .location-btn {
   display: flex;
   justify-content: center;
-  margin-top: 10Px;
-  margin-bottom: 150px;
+  
+  margin-bottom: 3rem;
 }
 
 .location-container {
