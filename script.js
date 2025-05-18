@@ -274,9 +274,28 @@ function checkGuest(name) {
 }
 
 // Show suggestions with debounce
+// Show suggestions with debounce
 let debounceTimer;
 function showSuggestions(value) {
   clearTimeout(debounceTimer);
+  
+  // Auto-expand search container
+  const container = document.querySelector(".search-container");
+  const tempSpan = document.createElement("span");
+  tempSpan.style.visibility = "hidden";
+  tempSpan.style.whiteSpace = "nowrap";
+  tempSpan.style.position = "absolute";
+  tempSpan.style.font = window.getComputedStyle(input).font;
+  tempSpan.textContent = value || input.placeholder;
+  
+  document.body.appendChild(tempSpan);
+  const textWidth = tempSpan.offsetWidth;
+  document.body.removeChild(tempSpan);
+  
+  const newWidth = Math.min(Math.max(textWidth + 80, 200), 500);
+  container.style.width = `${newWidth}px`;
+  
+  // Show suggestions
   debounceTimer = setTimeout(() => {
     const search = value.trim().toLowerCase();
     if (!search) {
@@ -290,7 +309,7 @@ function showSuggestions(value) {
 
     if (matches.length > 0) {
       suggestions.innerHTML = matches.map(name => 
-        `<li onclick="selectSuggestion('${name}')">${name} <span style="float: right; color: #f5d7b3; font-size: 0.9em;">${guestList[name]}</span></li>`
+        `<li onclick="selectSuggestion('${name}')">${name} <span style="float: right; color: #f5d7b3;">${guestList[name]}</span></li>`
       ).join('');
       suggestions.style.display = 'block';
     } else {
